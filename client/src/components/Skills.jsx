@@ -14,6 +14,11 @@ const Skills = () => {
       skills: ['Node.js', 'Express', 'REST APIs', 'MongoDB', 'Mongoose', 'JWT']
     },
     {
+      title: 'Programming Languages',
+      icon: 'bi-server',
+      skills: ['Python', 'Java', 'C++', 'C', 'JavaScript']
+    },
+    {
       title: 'Tools & Others',
       icon: 'bi-tools',
       skills: ['Git', 'GitHub', 'Postman', 'VS Code', 'npm', 'MongoDB Atlas']

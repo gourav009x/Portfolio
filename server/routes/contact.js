@@ -4,12 +4,21 @@ const { body, validationResult } = require('express-validator');
 const Contact = require('../models/Contact');
 const nodemailer = require('nodemailer');
 
-// Nodemailer transporter (Gmail)
+// ✅ Create transporter ONLY ONCE (outside try/catch)
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: process.env.EMAIL_USER, // your gmail
-    pass: process.env.EMAIL_PASS  // gmail app password
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS
+  }
+});
+
+// ✅ Verify transporter once when server starts
+transporter.verify((error, success) => {
+  if (error) {
+    console.log("❌ Email transporter error:", error);
+  } else {
+    console.log("✅ Email server is ready");
   }
 });
 
@@ -18,8 +27,8 @@ router.post(
   '/',
   [
     body('name').trim().notEmpty().withMessage('Name is required'),
-    body('email').isEmail().withMessage('Please provide a valid email'),
-    body('message').trim().notEmpty().withMessage('Message is required')
+    body('email').isEmail().withMessage('Valid email required'),
+    body('message').trim().notEmpty().withMessage('Message required')
   ],
   async (req, res) => {
     try {
@@ -30,60 +39,44 @@ router.post(
 
       const { name, email, message } = req.body;
 
-      // Save to database
+      // ✅ Save to DB
       const contact = new Contact({ name, email, message });
       await contact.save();
 
-      // Email content
+      // ✅ Email config
       const mailOptions = {
         from: `"Portfolio Contact" <${process.env.EMAIL_USER}>`,
-        to: "whygourav@gmail.com",
-        subject: "🚨 Someone is trying to get in touch with you",
+        to: process.env.EMAIL_USER, // better to send to yourself
+        subject: "New Portfolio Message",
+        replyTo: email, // VERY IMPORTANT
         html: `
-          <h2>📩 New Contact Form Submission</h2>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Message:</strong></p>
+          <h2>New Contact Message</h2>
+          <p><b>Name:</b> ${name}</p>
+          <p><b>Email:</b> ${email}</p>
+          <p><b>Message:</b></p>
           <p>${message}</p>
-          <hr/>
-          <p>This message was sent from your portfolio contact form.</p>
         `
       };
 
-      // Send email
+      // ✅ Send email
       await transporter.sendMail(mailOptions);
 
-      res.status(201).json({
+      res.status(200).json({
         success: true,
-        message: 'Message sent successfully! I will get back to you soon.'
+        message: "Message sent successfully!"
       });
-
 
     } catch (error) {
-      console.error('Contact form error:', error);
+      console.error("❌ Contact error:", error);
       res.status(500).json({
         success: false,
-        message: 'Something went wrong. Please try again later.'
-      });
-      const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: process.env.EMAIL_USER,
-          pass: process.env.EMAIL_PASS
-        }
-      });
-      transporter.verify(function(error, success) {
-        if (error) {
-          console.log("Email transporter error:", error);
-        } else {
-          console.log("Server is ready to send email");
-        }
+        message: "Server error. Try again later."
       });
     }
   }
 );
 
-// GET /api/contact (Admin use)
+// GET contacts
 router.get('/', async (req, res) => {
   try {
     const contacts = await Contact.find().sort({ createdAt: -1 });

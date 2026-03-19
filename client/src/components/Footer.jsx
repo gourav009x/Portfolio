@@ -14,10 +14,10 @@ const Footer = () => {
             </p>
           </Col>
           <Col md={6} className="text-center text-md-end">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-white me-3 fs-5">
+            <a href="https://github.com/gourav009x" target="_blank" rel="noopener noreferrer" className="text-white me-3 fs-5">
               <i className="bi bi-github"></i>
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-white me-3 fs-5">
+            <a href="https://www.linkedin.com/in/gourav-05-saini/" target="_blank" rel="noopener noreferrer" className="text-white me-3 fs-5">
               <i className="bi bi-linkedin"></i>
             </a>
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-white fs-5">

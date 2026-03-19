@@ -6,23 +6,6 @@ const Projects = () => {
   const [projects, setProjects] = useState([])
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    fetchProjects()
-  }, [])
-
-  const fetchProjects = async () => {
-    try {
-      const response = await axios.get('/api/projects')
-      setProjects(response.data)
-    } catch (error) {
-      console.error('Error fetching projects:', error)
-      // Fallback to default projects if API fails
-      setProjects(getDefaultProjects())
-    } finally {
-      setLoading(false)
-    }
-  }
-
   const getDefaultProjects = () => [
     {
       _id: '1',
@@ -53,9 +36,27 @@ const Projects = () => {
     // }
   ]
 
+  const fetchProjects = async () => {
+    try {
+      const response = await axios.get('/api/projects')
+      setProjects(response.data)
+    } catch (error) {
+      console.error('Error fetching projects:', error)
+      // Fallback to default projects if API fails
+      setProjects(getDefaultProjects())
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    fetchProjects()
+  }, [])
+
   if (loading) {
     return (
       <section id="projects" className="bg-light">
+        
         <Container>
           <h2 className="section-title">My Projects</h2>
           <div className="text-center py-5">

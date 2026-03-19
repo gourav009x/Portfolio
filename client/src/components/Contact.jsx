@@ -123,13 +123,13 @@ const Contact = () => {
             <div className="text-center mt-5">
               <h5 className="mb-4">Or reach me at</h5>
               <div className="d-flex justify-content-center gap-4">
-                <a href="mailto:your.email@example.com" className="text-decoration-none">
-                  <i className="bi bi-envelope-fill fs-3 text-primary"></i>
-                </a>
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-decoration-none">
+                {/* <a href="mailto:whygourav@gmail.com" className="text-decoration-none">
+                  <i className="bi bi-envelope-fill fs-3 text-primary"></i> */}
+                {/* </a> */}
+                <a href="https://github.com/gourav009x" target="_blank" rel="noopener noreferrer" className="text-decoration-none">
                   <i className="bi bi-github fs-3 text-dark"></i>
                 </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-decoration-none">
+                <a href="https://www.linkedin.com/in/gourav-05-saini/" target="_blank" rel="noopener noreferrer" className="text-decoration-none">
                   <i className="bi bi-linkedin fs-3 text-primary"></i>
                 </a>
               </div>
