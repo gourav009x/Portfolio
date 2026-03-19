@@ -24,7 +24,7 @@ const Projects = () => {
       githubUrl: 'https://github.com/yourusername/vision-ai',
       liveUrl: '',
       featured: true
-    },
+    }
     // {
     //   _id: '3',
     //   title: 'Social Media Dashboard',
