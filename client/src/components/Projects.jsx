@@ -21,7 +21,7 @@ const Projects = () => {
       title: 'Vision AI',
       description: 'AI-powered computer vision application for image analysis and recognition.',
       technologies: ['React', 'Node.js', 'Express', 'MongoDB'],
-      githubUrl: 'https://github.com/yourusername/vision-ai',
+      githubUrl: 'https://github.com/gourav009x/Vison-AI-project',
       liveUrl: '',
       featured: true
     }
