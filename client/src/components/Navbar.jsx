@@ -32,7 +32,7 @@ const Navbar = ({ scrollY }) => {
     >
       <Container>
         <BootstrapNavbar.Brand href="#home" onClick={(e) => handleNavClick(e, '#home')} className="fw-bold">
-          Portfolio
+          Gourav Saini
         </BootstrapNavbar.Brand>
         <BootstrapNavbar.Toggle
           aria-controls="basic-navbar-nav"
