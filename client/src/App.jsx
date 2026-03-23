@@ -30,6 +30,7 @@ function App() {
       <Certificates />
       <Resume />
       <Contact />
+
       <Footer />
     </div>
   )

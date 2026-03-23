@@ -29,13 +29,23 @@ const Skills = () => {
     <section id="skills">
       <Container>
         <h2 className="section-title">Skills & Technologies</h2>
-        <Row>
+        <Row className="justify-content-center">
           {skillCategories.map((category, index) => (
-            <Col lg={4} md={6} className="mb-4" key={index}>
-              <div className="card h-100 shadow-sm">
+            <Col
+              lg={4}
+              md={6}
+              className={`mb-4 d-flex justify-content-center ${index === 3 ? 'mx-auto' : ''
+                }`}
+              key={index}
+            >
+              <div className="card h-100 shadow-sm" style={{ width: '100%', maxWidth: '350px' }}>
                 <div className="card-body text-center p-4">
-                  <i className={`bi ${category.icon} text-primary`} style={{ fontSize: '3rem' }}></i>
+                  <i
+                    className={`bi ${category.icon} text-primary`}
+                    style={{ fontSize: '3rem' }}
+                  ></i>
                   <h4 className="mt-3 mb-4">{category.title}</h4>
+
                   <div>
                     {category.skills.map((skill, skillIndex) => (
                       <span key={skillIndex} className="skill-badge">
