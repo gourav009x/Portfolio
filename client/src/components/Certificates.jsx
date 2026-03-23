@@ -20,14 +20,14 @@ const Certificates = () => {
       credentialUrl: 'https://coursera.org/share/5f7a405255e481461cedf1d3fbbe12ea',
       skills: ['Network Routing', 'Network Protocols', 'Network Planning And Design','TCP/IP']
     },
-    // {
-    //   id: 'cert-3',
-    //   title: 'Cloud Fundamentals',
-    //   issuer: 'Your Issuer',
-    //   date: '2026',
-    //   credentialUrl: 'https://example.com',
-    //   skills: ['Cloud', 'Deployment', 'DevOps Basics']
-    // }
+    {
+      id: 'cert-3',
+      title: 'Responsive Web Design',
+      issuer: 'FreeCodeCamp',
+      date: '2023',
+      credentialUrl: 'https://example.comhttps://drive.google.com/file/d/1BXRi4zd-7BYIG4VrawXS2GPz17h7-l8S/view?usp=sharing',
+      skills: ['HTML', 'CSS', 'Javascript']
+    }
   ]
 
   return (
