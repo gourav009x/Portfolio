@@ -70,12 +70,12 @@ const Hero = () => {
                 }}
               >
                 <img 
-                  src="/profile.jpg" 
+                  src="/PFP.png" 
                   alt="Profile" 
                   style={{ 
                     width: '100%', 
                     height: '100%', 
-                    objectFit: 'cover',
+                    objectFit: 'relative',
                     borderRadius: '50%'
                   }}
                   onError={(e) => {
